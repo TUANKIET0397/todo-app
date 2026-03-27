@@ -1,16 +1,44 @@
-# React + Vite
+# Cấu trúc dự án fullstack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+project-root/
+│
+├── frontend/ # Phần giao diện (React + Vite + Tailwind)
+│ ├── public/ # Static assets (favicon, images)
+│ ├── src/
+│ │ ├── components/ # Các component tái sử dụng (Button, TodoItem, Modal...)
+│ │ ├── pages/ # Các trang chính (Home, Login, Dashboard...)
+│ │ ├── layouts/ # Layout tổng thể (Header, Sidebar, Footer)
+│ │ ├── hooks/ # Custom hooks (useAuth, useFetch...)
+│ │ ├── context/ # React Context (AuthContext, ThemeContext...)
+│ │ ├── services/ # API call (axios, fetch)
+│ │ ├── styles/ # File CSS gốc, Tailwind config
+│ │ ├── App.jsx
+│ │ └── main.jsx
+│ ├── tailwind.config.js # Config Tailwind
+│ ├── package.json
+│ └── vite.config.js
+│
+├── backend/ # Phần server (Node.js/Express/NestJS)
+│ ├── src/
+│ │ ├── controllers/ # Xử lý request (TodoController, UserController...)
+│ │ ├── models/ # Mô hình dữ liệu (MongoDB, SQL)
+│ │ ├── routes/ # Định nghĩa API routes
+│ │ ├── middleware/ # Middleware (auth, logging...)
+│ │ ├── services/ # Business logic (TodoService, AuthService...)
+│ │ └── index.js # Entry point server
+│ ├── package.json
+│ └── .env # Config môi trường (DB_URL, SECRET_KEY...)
+│
+├── docs/ # Tài liệu dự án (README, API docs, thiết kế)
+├── .gitignore
+└── README.md
 
-Currently, two official plugins are available:
+## lý do nhẹ
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+- Frontend: React + Tailwind → lo phần UI, logic hiển thị.
 
-## React Compiler
+- Backend: Node.js/Express → lo API, database, xử lý nghiệp vụ.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Tách riêng: dễ quản lý, dễ deploy (frontend có thể host trên Vercel/Netlify, backend trên server khác).
+```
