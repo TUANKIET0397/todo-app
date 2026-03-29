@@ -1,0 +1,5 @@
+/* Quy tắc cho tailwind: Layout → Size → Spacing → Color → Effect */
+/* có thể dùng thư viện clsx để bật tắt trạng thái */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

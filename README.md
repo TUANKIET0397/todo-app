@@ -42,3 +42,8 @@ project-root/
 
 - Tách riêng: dễ quản lý, dễ deploy (frontend có thể host trên Vercel/Netlify, backend trên server khác).
 ```
+
+## Noted
+
+Copilot: disable // Tắt
+Copilot: enable // Bật
