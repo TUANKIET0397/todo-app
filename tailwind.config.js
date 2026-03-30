@@ -6,6 +6,9 @@ export default {
             spacing: {
                 2.2: "22px",
             },
+            colors: {
+                // primary: "#64748B",
+            },
         },
     },
     plugins: [],
