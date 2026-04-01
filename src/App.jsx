@@ -1,7 +1,10 @@
 import "./index.css"
+import { useState } from "react"
+import Headers from "./components/Headers"
+import ManageTask from "./components/ManageTask"
 import { logo, dashboard, today, thisWeek, settings, add } from "./assets/icons"
 
-function NavItem({ icon, label, active = false }) {
+function NavItem({ icon, label, active }) {
     return (
         <div
             className={`flex gap-3 pl-4 py-3 hover:bg-[#004AC6]/10 
@@ -31,11 +34,13 @@ function ButtonEdit({ onclick, icon, label }) {
     )
 }
 
-function handbleCreate() {
-    return alert("Click rồi ní ơi😊")
+const handleCreate = (title) => {
+    setTitle(title)
 }
 
 export default function App() {
+    const [title, setTitle] = useState("today")
+
     return (
         <div className="flex h-screen">
             <aside className="flex flex-col justify-between w-[260px] h-full px-6 py-6">
@@ -56,12 +61,17 @@ export default function App() {
                     </nav>
                 </div>
                 <ButtonEdit
-                    onclick={handbleCreate}
+                    onclick={handleCreate}
                     icon={add}
                     label="Create Task"
                 />
             </aside>
-            <main>Bên phải</main>
+            <main className="w-full">
+                <Headers />
+                <div className="bg-[#f6f9ff]">
+                    <ManageTask />
+                </div>
+            </main>
         </div>
     )
 }
