@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 const FilterButton = ({ onClick, label, isActive }) => {
     return (
         <>
@@ -14,49 +12,75 @@ const FilterButton = ({ onClick, label, isActive }) => {
     )
 }
 
-const DetailTasks = () => {
+const TaskList = ({ filter, tasks }) => {
+    const getTasksByFilter = () => {
+        switch (filter) {
+            case "Tất cả":
+                return tasks
+            case "Ưu tiên cao":
+                return tasks.filter((task) => task.priority === "high")
+            case "Đang làm":
+                return tasks.filter((task) => task.status === "doing")
+            case "Hoàn thành":
+                return tasks.filter((task) => task.status === "completed")
+            default:
+                return tasks
+        }
+    }
+
+    const handleDesc = (length, filter) => {
+        
+    }
+
+    const filteredTasks = getTasksByFilter()
+
     return (
-        <>
-            <h3>Ưu tiên cao (3)</h3>
-            <h3>Mức độ trung bình (2)</h3>
-            <h3>Mức độ thấp (1)</h3>
-        </>
+        <div className="px-[40px] py-[16px]">
+            {filteredTasks.map((task) => (
+                <div key={task.id} className="grid gap-4 mb-4 p-4">
+                    <div>{handleDesc(filteredTasks.length, filter.priority)}</div>
+                    <div>{task.title}</div>
+                    <div>{task.priority}</div>
+                    <div>{task.status}</div>
+                    <div>{task.time}</div>
+                </div>
+            ))}
+        </div>
     )
 }
 
-export default function () {
-    const [activeFilter, setActiveFilter] = useState("Tất cả")
-    const handleClick = (label) => {
-        setActiveFilter(label)
-    }
+// <>
+//     <div>Ưu tiên cao</div>
+//     <div>Mức độ trung bình</div>
+//     <div>Mức độ thấp</div>
+// </>
 
+export default function ManageTask({ tasks, setTasks, filter, setFilter }) {
     return (
         <>
             <div className="flex gap-4 py-[36px] px-[40px]">
                 <FilterButton
-                    onClick={() => handleClick("Tất cả")}
+                    onClick={() => setFilter("Tất cả")}
                     label="Tất cả"
-                    isActive={activeFilter === "Tất cả"}
+                    isActive={filter === "Tất cả"}
                 />
                 <FilterButton
-                    onClick={() => handleClick("Ưu tiên cao")}
+                    onClick={() => setFilter("Ưu tiên cao")}
                     label="Ưu tiên cao"
-                    isActive={activeFilter === "Ưu tiên cao"}
+                    isActive={filter === "Ưu tiên cao"}
                 />
                 <FilterButton
-                    onClick={() => handleClick("Đang làm")}
+                    onClick={() => setFilter("Đang làm")}
                     label="Đang làm"
-                    isActive={activeFilter === "Đang làm"}
+                    isActive={filter === "Đang làm"}
                 />
                 <FilterButton
-                    onClick={() => handleClick("Hoàn thành")}
+                    onClick={() => setFilter("Hoàn thành")}
                     label="Hoàn thành"
-                    isActive={activeFilter === "Hoàn thành"}
+                    isActive={filter === "Hoàn thành"}
                 />
             </div>
-            <div className="px-[40px]">
-                <DetailTasks />
-            </div>
+            <TaskList filter={filter} tasks={tasks} />
         </>
     )
 }
