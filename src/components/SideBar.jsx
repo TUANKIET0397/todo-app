@@ -1,4 +1,11 @@
-import { logo, dashboard, today, thisWeek, settings, add } from "../assets/icons"
+import {
+    logo,
+    dashboard,
+    today,
+    thisWeek,
+    settings,
+    add,
+} from "../assets/icons"
 
 function NavItem({ icon, label, active }) {
     return (
@@ -30,12 +37,10 @@ function ButtonEdit({ onclick, icon, label }) {
     )
 }
 
-const handleCreate = () => alert("Create Task")
-
-export default function () {
+export default function SideBar() {
     return (
         <>
-            <aside className="flex flex-col justify-between w-[260px] h-full px-6 py-6">
+            <aside className="fixed left-0 top-0 flex h-screen w-[260px] flex-col justify-between px-6 py-6">
                 <div>
                     <header>
                         <img
@@ -53,7 +58,7 @@ export default function () {
                     </nav>
                 </div>
                 <ButtonEdit
-                    onclick={handleCreate}
+                    onclick={() => alert("Create Task")}
                     icon={add}
                     label="Create Task"
                 />

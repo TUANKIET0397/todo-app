@@ -30,7 +30,7 @@ export default function () {
     }
 
     return (
-        <div className="flex justify-between mx-[40px] my-[24px] gap-[24px]">
+        <div className="sticky top-0 z-10 bg-white shadow-[0_2px_4px_rgba(0,0,0,0.1)] pb-8 border-b border-gray-200 flex justify-between px-[40px] mt-[24px] gap-[24px]">
             <div>
                 <h1 className="font-bold text-2xl text-black">Hôm nay</h1>
                 <p className="mt-1 font-normal text-sm text-gray-600">

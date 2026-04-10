@@ -10,6 +10,7 @@ const initialTasks = [
     {
         id: 1,
         title: "Hoàn thiện bài viết UI/UX",
+        desc: "Kiểm tra lại các đầu mục về Design System và Typography trước khi gửi cho biên tập viên.",
         priority: "high",
         status: "doing",
         time: "09:00 AM",
@@ -17,6 +18,7 @@ const initialTasks = [
     {
         id: 2,
         title: "Kiểm tra email đối tác",
+        desc: "Trả lời email từ đối tác về hợp tác mới.",
         priority: "medium",
         status: "doing",
         time: "04:30 PM",
@@ -24,9 +26,26 @@ const initialTasks = [
     {
         id: 3,
         title: "Đặt lịch bảo trì máy tính",
+        desc: "Đặt lịch bảo trì định kỳ cho máy tính văn phòng.",
         priority: "low",
         status: "completed",
         time: "11:00 AM",
+    },
+    {
+        id: 4,
+        title: "Làm elearning về ReactJS",
+        desc: "Hoàn thành các bài học về ReactJS và thực hành các ví dụ.",
+        priority: "high",
+        status: "doing",
+        time: "20:00 PM",
+    },
+    {
+        id: 5,
+        title: "Họp với nhóm marketing",
+        desc: "",
+        priority: "high",
+        status: "doing",
+        time: "16:30 PM",
     },
 ]
 
@@ -35,9 +54,9 @@ export default function App() {
     const [filter, setFilter] = useState("Tất cả")
 
     return (
-        <div className="flex h-screen">
+        <div className="relative flex h-screen">
             <SideBar />
-            <main className="w-full">
+            <main className="w-full pl-[260px]">
                 <Headers />
                 <div className="bg-[#f6f9ff]">
                     <ManageTask
